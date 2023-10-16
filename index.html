@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+<!===========YANGU================================================>
+  <style>
+  .link-section a {
+    display: flex;
+    align-items: center;
+    margin: 10px 0; /* Adjust margin to provide spacing */
+    text-decoration: none;
+    position: relative;
+}
+
+.link-section a img {
+    width: 67px;
+    height: 67px;
+    border-radius: 10px; /* Make it rounded */
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.link-section a p {
+    font-size: 16px; /* Adjust font size as needed */
+    margin: 0;
+    position: relative;
+}
+
+
+.link-section a p::after {
+    content: '';
+
+    position: absolute;
+    bottom: -5px; /* Adjust to position the line */
+    left: 0;
+    width: 250px; /* Fixed width for the line */
+    border-bottom: 1px solid #ccc; /* Add a horizontal line */
+}
+
+
+
+
+.save-contact-link:hover {
+  background-color: #555; /* Darker background color on hover */
+  text-decoration: none;
+}
+
+/* Add this CSS to your existing styles or your CSS file */
+.save-contact-link, .exchange-contact-link {
+  margin-left: 10px; /* Adjust the margin as needed for spacing */
+  padding: 8px 15px; /* Adjust padding to control the size of the box */
+  background-color: #333; /* Dark background color */
+  color: white; /* White text color */
+  text-decoration: none;
+  border-radius: 20px; /* Adjust the border-radius for rounded corners */
+}
+
+.save-contact-link:hover, .exchange-contact-link:hover {
+  background-color: #555; /* Darker background color on hover */
+  text-decoration: none;
+}
+
+.save-contact-link {
+  /* Other styles... */
+  background-color: #007BFF; /* Blue color for "Save Contact" */
+  /* Other styles... */
+}
+
+.exchange-contact-link {
+  /* Other styles... */
+  background-color: #28a745; /* Green color for "Exchange Contact" */
+  /* Other styles... */
+}
+
+
+
+.contact-popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      z-index: 9999;
+      max-width: 300px;
+      width: 100%;
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+
+    .popup-content {
+            overflow-y: auto; /* Enable vertical scrolling */
+            max-height: 60vh; /* Set maximum height */
+        }
+<!=============================pop up box===================>
+
+
+
+<!==============================pop up box=================>
+.dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropbtn {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #fff;
+      cursor: pointer;
+    }
+
+    .dropbtn:hover {
+      background-color: #f9f9f9;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.1);
+      border-radius: 5px;
+      z-index: 1;
+      max-height: 150px;
+      overflow-y: auto;
+    }
+
+    .dropdown-content img {
+      width: 20px;
+      height: 20px;
+      margin-right: 5px;
+    }
+
+    .country-option {
+      padding: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .country-option:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* Styles for the overlay and popup */
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      align-items: center;
+      justify-content: center;
+      z-index: 99999;
+    }
+
+    .popup {
+      display: none;
+      background: white;
+      padding: 20px;
+      width: 80%;
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 100000;
+    }
+
+    .popup h2 {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+
+    .popup label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .popup input, .popup select {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .popup p {
+      font-size: 0.8em;
+      margin-bottom: 10px;
+    }
+
+    .popup button {
+      padding: 10px 20px;
+      margin-right: 10px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .popup button:last-child {
+      margin-right: 0;
+    }
+
+    .popup button:hover {
+      background-color: #0056b3;
+    }
+
+    .close-button {
+      position: absolute;
+      top: 5px; /* Adjust top position */
+      right: 10px; /* Adjust right position */
+      font-size: 24px; /* Increase font size */
+      cursor: pointer;
+    }
+
+    .close-button:hover {
+      color: red; /* Change color on hover */
+    }
+
+    /* Additional styling for spacing */
+    .popup #exchangeContactBtn {
+      margin-top: 10px; /* Add some margin at the top */
+    }
+    .popup {
+      /* ... Other styles ... */
+      max-height: 80vh; /* Limit the maximum height */
+      overflow-y: auto; /* Enable vertical scrolling */
+    }
+<!====================Flag===============================>
+
+.country-select {
+    display: flex;
+    align-items: center;
+  }
+
+  .flag-icon {
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+  .country-dropdown {
+    position: absolute;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+  }
+
+  .country-option {
+    padding: 10px;
+    cursor: pointer;
+  }
+
+  .country-option:hover {
+    background-color: #f0f0f0;
+  }
+<!=================== DISAPPER ===============================>
+.contact-popup {
+      border: 1px solid #ccc;
+      padding: 20px;
+      position: absolute;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .close-button {
+  position: absolute;
+  top: 20px; /* Adjust top position */
+  right: 25px; /* Adjust right position */
+  font-size: 39px; /* Increase font size */
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: red; /* Change color on hover */
+}
+
+<!============== Flag=================>
+.country-select {
+      position: relative;
+      display: inline-block;
+      width: 50px; /* Adjust width as needed */
+    }
+
+    .country-select select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .country-select .flag-container {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      max-height: 200px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      top: 100%;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .country-select .flag-container img {
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    .country-select:hover .flag-container {
+      display: block;
+    }
+
+<!=============================VIDEO CAROUSEL======================>
+<!=======================VIDEO CAROUSEL====================================!>
+ /* Add your CSS styles for the video carousel and navigation dots here */
+ body {
+      font-family: Arial, sans-serif;
+    }
+
+    #carousel-container {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: thin;
+      scrollbar-color: transparent transparent;
+      white-space: nowrap;
+      padding: 20px;
+    }
+
+    .carousel-content {
+      display: flex;
+      scroll-snap-align: start;
+    }
+
+    .video-item {
+      scroll-snap-align: start;
+      flex: 0 0 auto;
+      margin-right: 20px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-item iframe {
+      width: 100%;
+      height: 200px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #ccc;
+      display: inline-block;
+      margin-right: 5px;
+    }
+
+    .dot.active {
+      background-color: #555;
+    }
+
+
+
+
+  </style>
+<!===================YANGU============================================>
+  <title>Victor Timona</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-O7f5ab5OZpspM4OsNcLCCMR1iY7oTrs+61cEG8fzsj0/dfDjzVl22k1Sdc+R0pKoZEEtJNEB5zp+Xr/m3j3Oiw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a href="https://samkituu.github.io/Sam_Kituu/" id="contactLink" target="_blank">Nijue</a></h1>
+
+      
+
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      
+
+    </div>
+  </header><!-- End Header -->
+
+  <!YANGUYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY>
+  <script>
+    let blinking = false; // Variable to track blinking state
+  
+    // Function to add the "blink" class
+    function startBlinking() {
+      const contactLink = document.getElementById('contactLink');
+      contactLink.classList.add('blink');
+    }
+  
+    // Function to remove the "blink" class
+    function stopBlinking() {
+      const contactLink = document.getElementById('contactLink');
+      contactLink.classList.remove('blink');
+    }
+  
+    // Listen for scroll events
+    window.addEventListener('scroll', () => {
+      const heroSection = document.getElementById('hero'); // Replace with the ID of the triggering section
+      const rect = heroSection.getBoundingClientRect();
+  
+      // Check if the section is in view
+      if (rect.top < window.innerHeight && blinking === false) {
+        startBlinking();
+        blinking = true;
+      } else if (rect.top >= window.innerHeight && blinking === true) {
+        stopBlinking();
+        blinking = false;
+      }
+    });
+  </script>
+
+  <!YangGGGGGGGGGGUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU>
+
+  <script>
+    // Function to add the "blink" class
+    function startBlinking() {
+      const contactLink = document.getElementById('contactLink');
+      contactLink.classList.add('blink');
+    }
+  
+    // Function to remove the "blink" class
+    function stopBlinking() {
+      const contactLink = document.getElementById('contactLink');
+      contactLink.classList.remove('blink');
+    }
+  
+    // Listen for scroll events
+    window.addEventListener('scroll', () => {
+      const heroSection = document.getElementById('hero'); // Replace with the ID of the triggering section
+      const rect = heroSection.getBoundingClientRect();
+  
+      // Check if the section is in view
+      if (rect.top < window.innerHeight) {
+        startBlinking();
+      } else {
+        stopBlinking();
+      }
+    });
+  </script>
+  
+
+
+  <!-- ======= Hero Section ======= -->
+  <div id="hero" class="hero route bg-image" style="background-image: url(assets/img/Timona.jpg)">
+    <div class="overlay-itro"></div>
+    <div class="hero-content display-table">
+      <div class="table-cell">
+        <div class="container">
+          <!--<p class="display-6 color-d">Hello, world!</p>-->
+          <h1 class="hero-title mb-4">I am Victor Timona</h1>
+          <p class="hero-subtitle"><span class="typed" data-typed-items="Financial Analyst, CEO, Entrepreneur, Safety Advocate"></span></p>
+          <!-- <p class="pt-3"><a class="btn btn-primary btn js-scroll px-4" href="#about" role="button">Learn More</a></p> -->
+        </div>
+      </div>
+    </div>
+  </div><!-- End Hero Section -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about-mf sect-pt4 route">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="box-shadow-full">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="row">
+                    <div class="col-sm-6 col-md-5">
+                      <div class="about-img">
+                        <img src="assets/img/Tim-Testimonial.jpg" class="img-fluid rounded b-shadow-a" alt="">
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-7">
+                      <div class="about-info">
+                        <p><span class="title-s">Name: </span> <span>Victor Timona</span></p>
+                        <p><span class="title-s">Profile: </span> <span>CEO at Libern Traders</span></p>
+                        <p><span class="title-s">Email: </span> <span><a href="mailto: liberntraders@gmail.com">liberntraders@gmail.com</a></span></p>
+                        <p><span class="title-s">Phone: </span> <span><a href="tel:+254720522469">0720522469</a></span></p> 
+                        <p>
+                          
+                          <button id="downloadButton" class="save-contact-link">Save Contact</button>
+
+  <script>
+    document.getElementById('downloadButton').addEventListener('click', function() {
+      const vCardContent = `
+BEGIN:VCARD
+VERSION:3.0
+FN:Victor Timona
+TEL:+254720522469
+EMAIL:liberntraders@gmail.com
+PHOTO;TYPE=JPEG;ENCODING=b:<base64_encoded_image_data>
+END:VCARD
+`;
+
+      // Replace with your actual base64 encoded image data
+      const profilePicData = '<base64_encoded_image_data>';
+
+      const vCardContentWithImage = vCardContent.replace('<base64_encoded_image_data>', profilePicData);
+      const blob = new Blob([vCardContentWithImage], { type: 'text/vcard' });
+
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.download = 'Victor_Timona_Contact.vcf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  </script>
+                         
+  <title>Contact Pop-up</title>
+</head>
+<body>
+  <title>Contact Pop-up</title>
+</head>
+<body>
+  <title>Contact Pop-up</title>
+</head>
+<body>
+  <button onclick="togglePopup()">Exchange Contact</button>
+
+  <div id="overlay" class="overlay">
+    <div id="popup" class="popup">
+      <span class="close-button" onclick="closePopup()">×</span>
+      <h2>Share your contact information with Timona</h2>
+
+      <label for="fullName">Full Name:</label>
+      <input type="text" id="fullName">
+
+      <label for="email">Email Address:</label>
+      <input type="email" id="email">
+
+      <div class="country-select dropdown">
+        <label for="countryCode">Country Code:</label>
+        <button class="dropbtn" id="countryCodeBtn" onclick="toggleCountryDropdown()">Select Country Code</button>
+        <div class="dropdown-content" id="countryDropdown">
+          <div class="country-option" onclick="selectCountry('+254', 'Kenya', '🇰🇪')">Kenya (+254) 🇰🇪</div>
+
+          <!-- Rest of the country options -->
+          <div class="country-option" onclick="selectCountry('+93', 'Afghanistan', '🇦🇫')">Afghanistan (+93) 🇦🇫</div>
+<div class="country-option" onclick="selectCountry('+355', 'Albania', '🇦🇱')">Albania (+355) 🇦🇱</div>
+<div class="country-option" onclick="selectCountry('+213', 'Algeria', '🇩🇿')">Algeria (+213) 🇩🇿</div>
+<div class="country-option" onclick="selectCountry('+376', 'Andorra', '🇦🇩')">Andorra (+376) 🇦🇩</div>
+<div class="country-option" onclick="selectCountry('+244', 'Angola', '🇦🇴')">Angola (+244) 🇦🇴</div>
+<div class="country-option" onclick="selectCountry('+1', 'Antigua and Barbuda', '🇦🇬')">Antigua and Barbuda (+1) 🇦🇬</div>
+<div class="country-option" onclick="selectCountry('+54', 'Argentina', '🇦🇷')">Argentina (+54) 🇦🇷</div>
+<div class="country-option" onclick="selectCountry('+374', 'Armenia', '🇦🇲')">Armenia (+374) 🇦🇲</div>
+<div class="country-option" onclick="selectCountry('+61', 'Australia', '🇦🇺')">Australia (+61) 🇦🇺</div>
+<div class="country-option" onclick="selectCountry('+43', 'Austria', '🇦🇹')">Austria (+43) 🇦🇹</div>
+<div class="country-option" onclick="selectCountry('+994', 'Azerbaijan', '🇦🇿')">Azerbaijan (+994) 🇦🇿</div>
+<div class="country-option" onclick="selectCountry('+1', 'Bahamas', '🇧🇸')">Bahamas (+1) 🇧🇸</div>
+<div class="country-option" onclick="selectCountry('+973', 'Bahrain', '🇧🇭')">Bahrain (+973) 🇧🇭</div>
+<div class="country-option" onclick="selectCountry('+880', 'Bangladesh', '🇧🇩')">Bangladesh (+880) 🇧🇩</div>
+<div class="country-option" onclick="selectCountry('+1', 'Barbados', '🇧🇧')">Barbados (+1) 🇧🇧</div>
+<div class="country-option" onclick="selectCountry('+375', 'Belarus', '🇧🇾')">Belarus (+375) 🇧🇾</div>
+<div class="country-option" onclick="selectCountry('+32', 'Belgium', '🇧🇪')">Belgium (+32) 🇧🇪</div>
+<div class="country-option" onclick="selectCountry('+501', 'Belize', '🇧🇿')">Belize (+501) 🇧🇿</div>
+<div class="country-option" onclick="selectCountry('+229', 'Benin', '🇧🇯')">Benin (+229) 🇧🇯</div>
+<div class="country-option" onclick="selectCountry('+975', 'Bhutan', '🇧🇹')">Bhutan (+975) 🇧🇹</div>
+<div class="country-option" onclick="selectCountry('+591', 'Bolivia', '🇧🇴')">Bolivia (+591) 🇧🇴</div>
+<div class="country-option" onclick="selectCountry('+387', 'Bosnia and Herzegovina', '🇧🇦')">Bosnia and Herzegovina (+387) 🇧🇦</div>
+<div class="country-option" onclick="selectCountry('+267', 'Botswana', '🇧🇼')">Botswana (+267) 🇧🇼</div>
+<div class="country-option" onclick="selectCountry('+55', 'Brazil', '🇧🇷')">Brazil (+55) 🇧🇷</div>
+<div class="country-option" onclick="selectCountry('+673', 'Brunei', '🇧🇳')">Brunei (+673) 🇧🇳</div>
+<div class="country-option" onclick="selectCountry('+359', 'Bulgaria', '🇧🇬')">Bulgaria (+359) 🇧🇬</div>
+<div class="country-option" onclick="selectCountry('+226', 'Burkina Faso', '🇧🇫')">Burkina Faso (+226) 🇧🇫</div>
+<div class="country-option" onclick="selectCountry('+257', 'Burundi', '🇧🇮')">Burundi (+257) 🇧🇮</div>
+<div class="country-option" onclick="selectCountry('+855', 'Cambodia', '🇰🇭')">Cambodia (+855) 🇰🇭</div>
+<div class="country-option" onclick="selectCountry('+237', 'Cameroon', '🇨🇲')">Cameroon (+237) 🇨🇲</div>
+<div class="country-option" onclick="selectCountry('+1', 'Canada', '🇨🇦')">Canada (+1) 🇨🇦</div>
+<div class="country-option" onclick="selectCountry('+238', 'Cape Verde', '🇨🇻')">Cape Verde (+238) 🇨🇻</div>
+<div class="country-option" onclick="selectCountry('+236', 'Central African Republic', '🇨🇫')">Central African Republic (+236) 🇨🇫</div>
+<div class="country-option" onclick="selectCountry('+235', 'Chad', '🇹🇩')">Chad (+235) 🇹🇩</div>
+<div class="country-option" onclick="selectCountry('+56', 'Chile', '🇨🇱')">Chile (+56) 🇨🇱</div>
+<div class="country-option" onclick="selectCountry('+86', 'China', '🇨🇳')">China (+86) 🇨🇳</div>
+<div class="country-option" onclick="selectCountry('+57', 'Colombia', '🇨🇴')">Colombia (+57) 🇨🇴</div>
+<div class="country-option" onclick="selectCountry('+269', 'Comoros', '🇰🇲')">Comoros (+269) 🇰🇲</div>
+<div class="country-option" onclick="selectCountry('+243', 'Congo, Democratic Republic of the', '🇨🇩')">Congo, Democratic Republic of the (+243) 🇨🇩</div>
+<div class="country-option" onclick="selectCountry('+242', 'Congo, Republic of the', '🇨🇬')">Congo, Republic of the (+242) 🇨🇬</div>
+<div class="country-option" onclick="selectCountry('+506', 'Costa Rica', '🇨🇷')">Costa Rica (+506) 🇨🇷</div>
+<div class="country-option" onclick="selectCountry('+225', 'Côte d'Ivoire', '🇨🇮')">Côte d'Ivoire (+225) 🇨🇮</div>
+<div class="country-option" onclick="selectCountry('+385', 'Croatia', '🇭🇷')">Croatia (+385) 🇭🇷</div>
+<div class="country-option" onclick="selectCountry('+53', 'Cuba', '🇨🇺')">Cuba (+53) 🇨🇺</div>
+<div class="country-option" onclick="selectCountry('+357', 'Cyprus', '🇨🇾')">Cyprus (+357) 🇨🇾</div>
+<div class="country-option" onclick="selectCountry('+420', 'Czech Republic', '🇨🇿')">Czech Republic (+420) 🇨🇿</div>
+<div class="country-option" onclick="selectCountry('+45', 'Denmark', '🇩🇰')">Denmark (+45) 🇩🇰</div>
+<div class="country-option" onclick="selectCountry('+253', 'Djibouti', '🇩🇯')">Djibouti (+253) 🇩🇯</div>
+<div class="country-option" onclick="selectCountry('+1', 'Dominica', '🇩🇲')">Dominica (+1) 🇩🇲</div>
+<div class="country-option" onclick="selectCountry('+1', 'Dominican Republic', '🇩🇴')">Dominican Republic (+1) 🇩🇴</div>
+<div class="country-option" onclick="selectCountry('+670', 'East Timor (Timor-Leste)', '🇹🇱')">East Timor (Timor-Leste) (+670) 🇹🇱</div>
+<div class="country-option" onclick="selectCountry('+593', 'Ecuador', '🇪🇨')">Ecuador (+593) 🇪🇨</div>
+<div class="country-option" onclick="selectCountry('+20', 'Egypt', '🇪🇬')">Egypt (+20) 🇪🇬</div>
+<div class="country-option" onclick="selectCountry('+503', 'El Salvador', '🇸🇻')">El Salvador (+503) 🇸🇻</div>
+<div class="country-option" onclick="selectCountry('+240', 'Equatorial Guinea', '🇬🇶')">Equatorial Guinea (+240) 🇬🇶</div>
+<div class="country-option" onclick="selectCountry('+291', 'Eritrea', '🇪🇷')">Eritrea (+291) 🇪🇷</div>
+<div class="country-option" onclick="selectCountry('+372', 'Estonia', '🇪🇪')">Estonia (+372) 🇪🇪</div>
+<div class="country-option" onclick="selectCountry('+251', 'Ethiopia', '🇪🇹')">Ethiopia (+251) 🇪🇹</div>
+<div class="country-option" onclick="selectCountry('+679', 'Fiji', '🇫🇯')">Fiji (+679) 🇫🇯</div>
+<div class="country-option" onclick="selectCountry('+358', 'Finland', '🇫🇮')">Finland (+358) 🇫🇮</div>
+<div class="country-option" onclick="selectCountry('+33', 'France', '🇫🇷')">France (+33) 🇫🇷</div>
+<div class="country-option" onclick="selectCountry('+241', 'Gabon', '🇬🇦')">Gabon (+241) 🇬🇦</div>
+<div class="country-option" onclick="selectCountry('+220', 'Gambia', '🇬🇲')">Gambia (+220) 🇬🇲</div>
+<div class="country-option" onclick="selectCountry('+995', 'Georgia', '🇬🇪')">Georgia (+995) 🇬🇪</div>
+<div class="country-option" onclick="selectCountry('+49', 'Germany', '🇩🇪')">Germany (+49) 🇩🇪</div>
+<div class="country-option" onclick="selectCountry('+233', 'Ghana', '🇬🇭')">Ghana (+233) 🇬🇭</div>
+<div class="country-option" onclick="selectCountry('+30', 'Greece', '🇬🇷')">Greece (+30) 🇬🇷</div>
+<div class="country-option" onclick="selectCountry('+299', 'Greenland', '🇬🇱')">Greenland (+299) 🇬🇱</div>
+<div class="country-option" onclick="selectCountry('+1', 'Grenada', '🇬🇩')">Grenada (+1) 🇬🇩</div>
+<div class="country-option" onclick="selectCountry('+502', 'Guatemala', '🇬🇹')">Guatemala (+502) 🇬🇹</div>
+<div class="country-option" onclick="selectCountry('+224', 'Guinea', '🇬🇳')">Guinea (+224) 🇬🇳</div>
+<div class="country-option" onclick="selectCountry('+245', 'Guinea-Bissau', '🇬🇼')">Guinea-Bissau (+245) 🇬🇼</div>
+<div class="country-option" onclick="selectCountry('+592', 'Guyana', '🇬🇾')">Guyana (+592) 🇬🇾</div>
+<div class="country-option" onclick="selectCountry('+509', 'Haiti', '🇭🇹')">Haiti (+509) 🇭🇹</div>
+<div class="country-option" onclick="selectCountry('+504', 'Honduras', '🇭🇳')">Honduras (+504) 🇭🇳</div>
+<div class="country-option" onclick="selectCountry('+36', 'Hungary', '🇭🇺')">Hungary (+36) 🇭🇺</div>
+<div class="country-option" onclick="selectCountry('+354', 'Iceland', '🇮🇸')">Iceland (+354) 🇮🇸</div>
+<div class="country-option" onclick="selectCountry('+91', 'India', '🇮🇳')">India (+91) 🇮🇳</div>
+<div class="country-option" onclick="selectCountry('+62', 'Indonesia', '🇮🇩')">Indonesia (+62) 🇮🇩</div>
+<div class="country-option" onclick="selectCountry('+98', 'Iran', '🇮🇷')">Iran (+98) 🇮🇷</div>
+<div class="country-option" onclick="selectCountry('+964', 'Iraq', '🇮🇶')">Iraq (+964) 🇮🇶</div>
+<div class="country-option" onclick="selectCountry('+353', 'Ireland', '🇮🇪')">Ireland (+353) 🇮🇪</div>
+<div class="country-option" onclick="selectCountry('+972', 'Israel', '🇮🇱')">Israel (+972) 🇮🇱</div>
+<div class="country-option" onclick="selectCountry('+39', 'Italy', '🇮🇹')">Italy (+39) 🇮🇹</div>
+<div class="country-option" onclick="selectCountry('+1', 'Jamaica', '🇯🇲')">Jamaica (+1) 🇯🇲</div>
+<div class="country-option" onclick="selectCountry('+81', 'Japan', '🇯🇵')">Japan (+81) 🇯🇵</div>
+<div class="country-option" onclick="selectCountry('+962', 'Jordan', '🇯🇴')">Jordan (+962) 🇯🇴</div>
+<div class="country-option" onclick="selectCountry('+7', 'Kazakhstan', '🇰🇿')">Kazakhstan (+7) 🇰🇿</div>
+<div class="country-option" onclick="selectCountry('+254', 'Kenya', '🇰🇪')">Kenya (+254) 🇰🇪</div>
+<div class="country-option" onclick="selectCountry('+686', 'Kiribati', '🇰🇮')">Kiribati (+686) 🇰🇮</div>
+<div class="country-option" onclick="selectCountry('+850', 'North Korea', '🇰🇵')">North Korea (+850) 🇰🇵</div>
+<div class="country-option" onclick="selectCountry('+82', 'South Korea', '🇰🇷')">South Korea (+82) 🇰🇷</div>
+<div class="country-option" onclick="selectCountry('+383', 'Kosovo', '🇽🇰')">Kosovo (+383) 🇽🇰</div>
+<div class="country-option" onclick="selectCountry('+965', 'Kuwait', '🇰🇼')">Kuwait (+965) 🇰🇼</div>
+<div class="country-option" onclick="selectCountry('+996', 'Kyrgyzstan', '🇰🇬')">Kyrgyzstan (+996) 🇰🇬</div>
+<div class="country-option" onclick="selectCountry('+856', 'Laos', '🇱🇦')">Laos (+856) 🇱🇦</div>
+<div class="country-option" onclick="selectCountry('+371', 'Latvia', '🇱🇻')">Latvia (+371) 🇱🇻</div>
+<div class="country-option" onclick="selectCountry('+961', 'Lebanon', '🇱🇧')">Lebanon (+961) 🇱🇧</div>
+<div class="country-option" onclick="selectCountry('+266', 'Lesotho', '🇱🇸')">Lesotho (+266) 🇱🇸</div>
+<div class="country-option" onclick="selectCountry('+231', 'Liberia', '🇱🇷')">Liberia (+231) 🇱🇷</div>
+<div class="country-option" onclick="selectCountry('+218', 'Libya', '🇱🇾')">Libya (+218) 🇱🇾</div>
+<div class="country-option" onclick="selectCountry('+423', 'Liechtenstein', '🇱🇮')">Liechtenstein (+423) 🇱🇮</div>
+<div class="country-option" onclick="selectCountry('+370', 'Lithuania', '🇱🇹')">Lithuania (+370) 🇱🇹</div>
+<div class="country-option" onclick="selectCountry('+352', 'Luxembourg', '🇱🇺')">Luxembourg (+352) 🇱🇺</div>
+<div class="country-option" onclick="selectCountry('+389', 'North Macedonia (Macedonia)', '🇲🇰')">North Macedonia (Macedonia) (+389) 🇲🇰</div>
+<div class="country-option" onclick="selectCountry('+261', 'Madagascar', '🇲🇬')">Madagascar (+261) 🇲🇬</div>
+<div class="country-option" onclick="selectCountry('+265', 'Malawi', '🇲🇼')">Malawi (+265) 🇲🇼</div>
+<div class="country-option" onclick="selectCountry('+60', 'Malaysia', '🇲🇾')">Malaysia (+60) 🇲🇾</div>
+<div class="country-option" onclick="selectCountry('+960', 'Maldives', '🇲🇻')">Maldives (+960) 🇲🇻</div>
+<div class="country-option" onclick="selectCountry('+223', 'Mali', '🇲🇱')">Mali (+223) 🇲🇱</div>
+<div class="country-option" onclick="selectCountry('+356', 'Malta', '🇲🇹')">Malta (+356) 🇲🇹</div>
+<div class="country-option" onclick="selectCountry('+692', 'Marshall Islands', '🇲🇭')">Marshall Islands (+692) 🇲🇭</div>
+<div class="country-option" onclick="selectCountry('+222', 'Mauritania', '🇲🇷')">Mauritania (+222) 🇲🇷</div>
+<div class="country-option" onclick="selectCountry('+230', 'Mauritius', '🇲🇺')">Mauritius (+230) 🇲🇺</div>
+<div class="country-option" onclick="selectCountry('+52', 'Mexico', '🇲🇽')">Mexico (+52) 🇲🇽</div>
+<div class="country-option" onclick="selectCountry('+691', 'Micronesia', '🇫🇲')">Micronesia (+691) 🇫🇲</div>
+<div class="country-option" onclick="selectCountry('+373', 'Moldova', '🇲🇩')">Moldova (+373) 🇲🇩</div>
+<div class="country-option" onclick="selectCountry('+377', 'Monaco', '🇲🇨')">Monaco (+377) 🇲🇨</div>
+<div class="country-option" onclick="selectCountry('+976', 'Mongolia', '🇲🇳')">Mongolia (+976) 🇲🇳</div>
+<div class="country-option" onclick="selectCountry('+382', 'Montenegro', '🇲🇪')">Montenegro (+382) 🇲🇪</div>
+<div class="country-option" onclick="selectCountry('+212', 'Morocco', '🇲🇦')">Morocco (+212) 🇲🇦</div>
+<div class="country-option" onclick="selectCountry('+258', 'Mozambique', '🇲🇿')">Mozambique (+258) 🇲🇿</div>
+<div class="country-option" onclick="selectCountry('+95', 'Myanmar (Burma)', '🇲🇲')">Myanmar (Burma) (+95) 🇲🇲</div>
+<div class="country-option" onclick="selectCountry('+264', 'Namibia', '🇳🇦')">Namibia (+264) 🇳🇦</div>
+<div class="country-option" onclick="selectCountry('+674', 'Nauru', '🇳🇷')">Nauru (+674) 🇳🇷</div>
+<div class="country-option" onclick="selectCountry('+977', 'Nepal', '🇳🇵')">Nepal (+977) 🇳🇵</div>
+<div class="country-option" onclick="selectCountry('+31', 'Netherlands', '🇳🇱')">Netherlands (+31) 🇳🇱</div>
+<div class="country-option" onclick="selectCountry('+64', 'New Zealand', '🇳🇿')">New Zealand (+64) 🇳🇿</div>
+<div class="country-option" onclick="selectCountry('+505', 'Nicaragua', '🇳🇮')">Nicaragua (+505) 🇳🇮</div>
+<div class="country-option" onclick="selectCountry('+227', 'Niger', '🇳🇪')">Niger (+227) 🇳🇪</div>
+<div class="country-option" onclick="selectCountry('+234', 'Nigeria', '🇳🇬')">Nigeria (+234) 🇳🇬</div>
+<div class="country-option" onclick="selectCountry('+47', 'Norway', '🇳🇴')">Norway (+47) 🇳🇴</div>
+<div class="country-option" onclick="selectCountry('+968', 'Oman', '🇴🇲')">Oman (+968) 🇴🇲</div>
+<div class="country-option" onclick="selectCountry('+92', 'Pakistan', '🇵🇰')">Pakistan (+92) 🇵🇰</div>
+<div class="country-option" onclick="selectCountry('+680', 'Palau', '🇵🇼')">Palau (+680) 🇵🇼</div>
+<div class="country-option" onclick="selectCountry('+507', 'Panama', '🇵🇦')">Panama (+507) 🇵🇦</div>
+<div class="country-option" onclick="selectCountry('+675', 'Papua New Guinea', '🇵🇬')">Papua New Guinea (+675) 🇵🇬</div>
+<div class="country-option" onclick="selectCountry('+595', 'Paraguay', '🇵🇾')">Paraguay (+595) 🇵🇾</div>
+<div class="country-option" onclick="selectCountry('+51', 'Peru', '🇵🇪')">Peru (+51) 🇵🇪</div>
+<div class="country-option" onclick="selectCountry('+63', 'Philippines', '🇵🇭')">Philippines (+63) 🇵🇭</div>
+<div class="country-option" onclick="selectCountry('+48', 'Poland', '🇵🇱')">Poland (+48) 🇵🇱</div>
+<div class="country-option" onclick="selectCountry('+351', 'Portugal', '🇵🇹')">Portugal (+351) 🇵🇹</div>
+<div class="country-option" onclick="selectCountry('+974', 'Qatar', '🇶🇦')">Qatar (+974) 🇶🇦</div>
+<div class="country-option" onclick="selectCountry('+40', 'Romania', '🇷🇴')">Romania (+40) 🇷🇴</div>
+<div class="country-option" onclick="selectCountry('+7', 'Russia', '🇷🇺')">Russia (+7) 🇷🇺</div>
+<div class="country-option" onclick="selectCountry('+250', 'Rwanda', '🇷🇼')">Rwanda (+250) 🇷🇼</div>
+<div class="country-option" onclick="selectCountry('+1', 'Saint Kitts and Nevis', '🇰🇳')">Saint Kitts and Nevis (+1) 🇰🇳</div>
+<div class="country-option" onclick="selectCountry('+1', 'Saint Lucia', '🇱🇨')">Saint Lucia (+1) 🇱🇨</div>
+<div class="country-option" onclick="selectCountry('+1', 'Saint Vincent and the Grenadines', '🇻🇨')">Saint Vincent and the Grenadines (+1) 🇻🇨</div>
+<div class="country-option" onclick="selectCountry('+685', 'Samoa', '🇼🇸')">Samoa (+685) 🇼🇸</div>
+<div class="country-option" onclick="selectCountry('+378', 'San Marino', '🇸🇲')">San Marino (+378) 🇸🇲</div>
+<div class="country-option" onclick="selectCountry('+239', 'São Tomé and Príncipe', '🇸🇹')">São Tomé and Príncipe (+239) 🇸🇹</div>
+<div class="country-option" onclick="selectCountry('+966', 'Saudi Arabia', '🇸🇦')">Saudi Arabia (+966) 🇸🇦</div>
+<div class="country-option" onclick="selectCountry('+221', 'Senegal', '🇸🇳')">Senegal (+221) 🇸🇳</div>
+<div class="country-option" onclick="selectCountry('+381', 'Serbia', '🇷🇸')">Serbia (+381) 🇷🇸</div>
+<div class="country-option" onclick="selectCountry('+248', 'Seychelles', '🇸🇨')">Seychelles (+248) 🇸🇨</div>
+<div class="country-option" onclick="selectCountry('+232', 'Sierra Leone', '🇸🇱')">Sierra Leone (+232) 🇸🇱</div>
+<div class="country-option" onclick="selectCountry('+65', 'Singapore', '🇸🇬')">Singapore (+65) 🇸🇬</div>
+<div class="country-option" onclick="selectCountry('+421', 'Slovakia', '🇸🇰')">Slovakia (+421) 🇸🇰</div>
+<div class="country-option" onclick="selectCountry('+386', 'Slovenia', '🇸🇮')">Slovenia (+386) 🇸🇮</div>
+<div class="country-option" onclick="selectCountry('+677', 'Solomon Islands', '🇸🇧')">Solomon Islands (+677) 🇸🇧</div>
+<div class="country-option" onclick="selectCountry('+252', 'Somalia', '🇸🇴')">Somalia (+252) 🇸🇴</div>
+<div class="country-option" onclick="selectCountry('+27', 'South Africa', '🇿🇦')">South Africa (+27) 🇿🇦</div>
+<div class="country-option" onclick="selectCountry('+211', 'South Sudan', '🇸🇸')">South Sudan (+211) 🇸🇸</div>
+<div class="country-option" onclick="selectCountry('+34', 'Spain', '🇪🇸')">Spain (+34) 🇪🇸</div>
+<div class="country-option" onclick="selectCountry('+94', 'Sri Lanka', '🇱🇰')">Sri Lanka (+94) 🇱🇰</div>
+<div class="country-option" onclick="selectCountry('+249', 'Sudan', '🇸🇩')">Sudan (+249) 🇸🇩</div>
+<div class="country-option" onclick="selectCountry('+597', 'Suriname', '🇸🇷')">Suriname (+597) 🇸🇷</div>
+<div class="country-option" onclick="selectCountry('+47', 'Svalbard and Jan Mayen', '🇸🇯')">Svalbard and Jan Mayen (+47) 🇸🇯</div>
+<div class="country-option" onclick="selectCountry('+268', 'Swaziland', '🇸🇿')">Swaziland (+268) 🇸🇿</div>
+<div class="country-option" onclick="selectCountry('+46', 'Sweden', '🇸🇪')">Sweden (+46) 🇸🇪</div>
+<div class="country-option" onclick="selectCountry('+41', 'Switzerland', '🇨🇭')">Switzerland (+41) 🇨🇭</div>
+<div class="country-option" onclick="selectCountry('+963', 'Syria', '🇸🇾')">Syria (+963) 🇸🇾</div>
+<div class="country-option" onclick="selectCountry('+886', 'Taiwan', '🇹🇼')">Taiwan (+886) 🇹🇼</div>
+<div class="country-option" onclick="selectCountry('+992', 'Tajikistan', '🇹🇯')">Tajikistan (+992) 🇹🇯</div>
+<div class="country-option" onclick="selectCountry('+255', 'Tanzania', '🇹🇿')">Tanzania (+255) 🇹🇿"></div>
+<div class="country-option" onclick="selectCountry('+66', 'Thailand', '🇹🇭')">Thailand (+66) 🇹🇭">Thailand (+66) 🇹🇭</div>
+<div class="country-option" onclick="selectCountry('+228', 'Togo', '🇹🇬')">Togo (+228) 🇹🇬</div>
+<div class="country-option" onclick="selectCountry('+690', 'Tokelau', '🇹🇰')">Tokelau (+690) 🇹🇰</div>
+<div class="country-option" onclick="selectCountry('+676', 'Tonga', '🇹🇴')">Tonga (+676) 🇹🇴</div>
+<div class="country-option" onclick="selectCountry('+1', 'Trinidad and Tobago', '🇹🇹')">Trinidad and Tobago (+1) 🇹🇹</div>
+<div class="country-option" onclick="selectCountry('+216', 'Tunisia', '🇹🇳')">Tunisia (+216) 🇹🇳</div>
+<div class="country-option" onclick="selectCountry('+90', 'Turkey', '🇹🇷')">Turkey (+90) 🇹🇷</div>
+<div class="country-option" onclick="selectCountry('+993', 'Turkmenistan', '🇹🇲')">Turkmenistan (+993) 🇹🇲</div>
+<div class="country-option" onclick="selectCountry('+1', 'Turks and Caicos Islands', '🇹🇨')">Turks and Caicos Islands (+1) 🇹🇨</div>
+<div class="country-option" onclick="selectCountry('+688', 'Tuvalu', '🇹🇻')">Tuvalu (+688) 🇹🇻</div>
+<div class="country-option" onclick="selectCountry('+256', 'Uganda', '🇺🇬')">Uganda (+256) 🇺🇬</div>
+<div class="country-option" onclick="selectCountry('+380', 'Ukraine', '🇺🇦')">Ukraine (+380) 🇺🇦</div>
+<div class="country-option" onclick="selectCountry('+971', 'United Arab Emirates', '🇦🇪')">United Arab Emirates (+971) 🇦🇪</div>
+<div class="country-option" onclick="selectCountry('+44', 'United Kingdom', '🇬🇧')">United Kingdom (+44) 🇬🇧</div>
+<div class="country-option" onclick="selectCountry('+1', 'United States', '🇺🇸')">United States (+1) 🇺🇸</div>
+<div class="country-option" onclick="selectCountry('+598', 'Uruguay', '🇺🇾')">Uruguay (+598) 🇺🇾</div>
+<div class="country-option" onclick="selectCountry('+998', 'Uzbekistan', '🇺🇿')">Uzbekistan (+998) 🇺🇿</div>
+<div class="country-option" onclick="selectCountry('+678', 'Vanuatu', '🇻🇺')">Vanuatu (+678) 🇻🇺</div>
+<div class="country-option" onclick="selectCountry('+39', 'Vatican City', '🇻🇦')">Vatican City (+39) 🇻🇦</div>
+<div class="country-option" onclick="selectCountry('+58', 'Venezuela', '🇻🇪')">Venezuela (+58) 🇻🇪</div>
+<div class="country-option" onclick="selectCountry('+84', 'Vietnam', '🇻🇳')">Vietnam (+84) 🇻🇳</div>
+<div class="country-option" onclick="selectCountry('+681', 'Wallis and Futuna', '🇼🇫')">Wallis and Futuna (+681) 🇼🇫</div>
+<div class="country-option" onclick="selectCountry('+212', 'Western Sahara', '🇪🇭')">Western Sahara (+212) 🇪🇭</div>
+<div class="country-option" onclick="selectCountry('+967', 'Yemen', '🇾🇪')">Yemen (+967) 🇾🇪</div>
+<div class="country-option" onclick="selectCountry('+260', 'Zambia', '🇿🇲')">Zambia (+260) 🇿🇲</div>
+<div class="country-option" onclick="selectCountry('+263', 'Zimbabwe', '🇿🇼')">Zimbabwe (+263) 🇿🇼</div>
+
+
+
+
+
+
+          
+          <!-- Add more country options here -->
+        </div>
+      </div>
+
+      <input type="text" id="phone">
+
+      <p>We will send Timona's NIJUE card to this email or phone.</p>
+
+      <button id="addMoreInfoBtn" onclick="toggleAdditionalInfo()">+ Add more info</button>
+
+      <div id="additionalInfo" style="display: none;">
+        <label for="jobTitle">Job Title:</label>
+        <input type="text" id="jobTitle">
+
+        <label for="company">Company:</label>
+        <input type="text" id="company">
+
+        <label for="note">Note:</label>
+        <input type="text" id="note">
+      </div>
+
+      <button id="exchangeContactBtn" onclick="exchangeContact()">Exchange contact</button>
+    </div>
+  </div>
+
+  <script>
+    function togglePopup() {
+      const overlay = document.getElementById('overlay');
+      const popup = document.getElementById('popup');
+      overlay.style.display = 'flex';
+      popup.style.display = 'block';
+    }
+
+    function toggleAdditionalInfo() {
+      const additionalInfo = document.getElementById('additionalInfo');
+      const addMoreInfoBtn = document.getElementById('addMoreInfoBtn');
+
+      if (additionalInfo.style.display === 'none' || additionalInfo.style.display === '') {
+        additionalInfo.style.display = 'block';
+        addMoreInfoBtn.innerText = '- Add more info';
+      } else {
+        additionalInfo.style.display = 'none';
+        addMoreInfoBtn.innerText = '+ Add more info';
+      }
+    }
+
+    function toggleCountryDropdown() {
+      const countryDropdown = document.getElementById('countryDropdown');
+      countryDropdown.style.display = (countryDropdown.style.display === 'none' || countryDropdown.style.display === '') ? 'block' : 'none';
+    }
+
+    function selectCountry(code, name, flag) {
+      const countryCodeBtn = document.getElementById('countryCodeBtn');
+      countryCodeBtn.innerText = `${name} ${code} ${flag}`;
+
+      const countryDropdown = document.getElementById('countryDropdown');
+      countryDropdown.style.display = 'none';
+
+      const phoneInput = document.getElementById('phone');
+      phoneInput.value = code;
+
+      const countryFlag = document.getElementById('countryFlag');
+      countryFlag.innerText = flag;
+    }
+
+    function exchangeContact() {
+      const fullName = document.getElementById('fullName').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const jobTitle = document.getElementById('jobTitle').value;
+      const company = document.getElementById('company').value;
+      const note = document.getElementById('note').value;
+
+      const contactInfo = `Full Name: ${fullName}\nEmail Address: ${email}\nPhone Number: ${phone}\nJob Title: ${jobTitle}\nCompany: ${company}\nNote: ${note}`;
+
+      // You can implement the email sending logic here
+      // Send an email with the contact information
+
+      alert('Contact shared successfully!');
+      closePopup();
+    }
+
+    function closePopup() {
+      const overlay = document.getElementById('overlay');
+      const popup = document.getElementById('popup');
+      overlay.style.display = 'none';
+      popup.style.display = 'none';
+    }
+  </script>
+                         </body>
+                         </html>
+                         
+                      </div>
+                    </div>
+                  </div>
+                  <div class="socials">
+                    <ul>
+                      <li><a href=""><span class="ico-circle"><i class="bi bi-linkedin"></i></span></a></li>
+                      <li><a href=""><span class="ico-circle"><i class="bi bi-facebook"></i></span></a></li>
+                      <li><a href=""><span class="ico-circle"><i class="bi bi-instagram"></i></span></a></li>
+                      <li><a href=""><span class="ico-circle"><i class="bi bi-twitter"></i></span></a></li>
+                      
+                                            
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="about-me pt-4 pt-md-0">
+                    <div class="title-box-2">
+                      <h5 class="title-left">
+                        About me
+                      </h5>
+                    </div>
+                    <p class="lead">
+                      I am a seasoned Financial Analyst with a wealth of experience in the financial sector. 
+                    </p>
+                    <p class="lead">
+                      In parallel to my financial endeavors, I hold the position of Chief Executive Officer at Libern Inc., a notable holding company overseeing the operations of Libern Traders and Libern Capital. 
+                    </p>
+                    <p class="lead">
+                      My dedication to enhancing health and safety standards in construction projects, particularly amidst the significant infrastructural development in the region, motivated me to establish a post-construction cleaning and Hygiene Solutions company.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End About Section -->
+<!.........................................................................................................................................Mpya......... >
+
+<section id="about" class="about-mf sect-pt4 route">
+  <div class="title-box-2">
+    <h5 class="title-left">
+      Video
+    </h5>
+  </div>
+  <div id="carousel-container">
+    <div class="carousel-content">
+      <!-- Video 1 -->
+      <div class="video-item">
+        <iframe src="https://www.youtube.com/embed/Wms1o2TpS0E?autoplay=0&rel=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+    
+      <!-- Video 2 -->
+      <div class="video-item">
+        <iframe src="https://www.youtube.com/embed/q_TF3q33pN4?autoplay=0&rel=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+    
+      <!-- Video 3 -->
+      <div class="video-item">
+        <iframe src="https://www.youtube.com/embed/aqs5T0sYu4E?autoplay=0&rel=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <!-- Video 4 -->
+      <div class="video-item">
+        <iframe src="https://www.youtube.com/embed/VGKzSysFqFs?autoplay=0&rel=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+
+      <!-- Add more video items with appropriate video IDs -->
+    </div>
+  </div>
+
+  <!-- Navigation dots -->
+  <div class="navigation-dots">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <!-- Add more dots for each video -->
+  </div>
+
+  <script>
+    const videos = document.querySelectorAll('.video-item iframe');
+    const dots = document.querySelectorAll('.dot');
+
+    // Set the initial active dot
+    let activeDot = 0;
+    dots[activeDot].classList.add('active');
+
+    function scrollToVideo(index) {
+      videos[index].scrollIntoView({ behavior: 'smooth' });
+      setActiveDot(index);
+    }
+
+    function setActiveDot(index) {
+      dots.forEach((dot, i) => {
+        if (i === index) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
+    // Add event listeners for dot clicks
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        scrollToVideo(index);
+      });
+    });
+
+    // Add event listener for scroll to update active dot
+    document.getElementById('carousel-container').addEventListener('scroll', () => {
+      const currentIndex = Math.round(
+        document.getElementById('carousel-container').scrollLeft / videos[0].offsetWidth
+      );
+      if (currentIndex !== activeDot) {
+        activeDot = currentIndex;
+        setActiveDot(activeDot);
+      }
+    });
+  </script>
+            <div class="col-md-6">
+              <div class="about-me pt-4 pt-md-0">
+                <div class="title-box-2">
+                  <h5 class="title-left">
+                    Links 
+                  </h5>
+                </div>
+                
+            
+                <!-- Links Section -->
+                <div class="link-section">
+                  <a href="https://samkituu.github.io/victortimonaportfolio.io/">
+                    <img src="assets/img/link1.JPG" alt="Thumbnail 1">
+                    <p>Victor Timona Portfolio link </p>
+                  </a>
+
+                  <div class="link-divider"></div> <!-- Horizontal line -->
+
+                  <a href="https://samkituu.github.io/liberntraders/">
+                    <img src="assets/img/link2.JPG" alt="Thumbnail 2">
+                    <p>Libern Traders</p>
+                  </a>
+            
+                  <!-- Add more links as needed -->
+                </div>
+                <!-- End Links Section -->
+            
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section><!-- End About Section -->
+
+
+<!..........................................................................................................................................Mpya..........>
+    
+   
+    
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url(assets/img/overlay-bg.jpg)">
+      <div class="overlay-mf"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="contact-mf">
+              <div id="contact" class="box-shadow-full">
+                
+                  <div class="col-md-6">
+                    <div class="title-box-2 pt-4 pt-md-0">
+                      <h5 class="title-left">
+                        Get in Touch
+                      </h5>
+                    </div>
+                    <div class="more-info">
+                      <p class="lead">
+                        
+                      </p>
+                      <ul class="list-ico">
+                        <li><span class="bi bi-geo-alt"></span> <span> <a href="https://www.google.com/maps/place/Kencom+House/@-1.2852762,36.8228947,17z/data=!4m15!1m8!3m7!1s0x182f1129d3a31c9d:0x91dd609d2e9a9f0f!2sMoi+Ave+%26+City+Hall+Way,+Nairobi!3b1!8m2!3d-1.2852762!4d36.8254696!16s%2Fg%2F11g0g9pzh7!3m5!1s0x182f10d7e72fe6e5:0x7b34320441ee62ee!8m2!3d-1.2860088!4d36.8257063!16s%2Fg%2F1yg4lthgh?entry=ttu" target="_blank">Kencom House</a></span></li>
+                        
+                        <li><span class="bi bi-phone"></span><span><a href="tel:+254720522469">0720522469</a></span></li>
+                        <li><span class="bi bi-envelope"></span><a href="mailto: liberntraders@gmail.com">liberntraders@gmail.com</a></span></li>
+                       
+                      </ul>
+                    </div>
+                    <div class="socials">
+                      <ul>
+                        <li><a href=""><span class="ico-circle"><i class="bi bi-facebook"></i></span></a></li>
+                        <li><a href=""><span class="ico-circle"><i class="bi bi-instagram"></i></span></a></li>
+                        <li><a href=""><span class="ico-circle"><i class="bi bi-twitter"></i></span></a></li>
+                        <li><a href=""><span class="ico-circle"><i class="bi bi-linkedin"></i></span></a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="copyright-box">
+            <p class="copyright">&copy; Powerd by <strong>Nijue</strong></p>
+            <div class="credits">
+              <!--
+              All the links in the footer should remain intact.
+              You can delete the links only if you purchased the pro version.
+              Licensing information: https://bootstrapmade.com/license/
+              Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=DevFolio
+            -->
+            Designed by <a href="https://samkituu.github.io/Sam_Kituu/" target="_blank">Nijue</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer><!-- End  Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
